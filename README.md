@@ -11,7 +11,7 @@ ALWAYS use Conventional Commmit syntax
 
 ## Feature Branch workflow
 
-1. git checkout -b feat/<name>
+1. `git checkout -b feat/<name>`
 1. complete the lesson
-1. checkout main
-1. merge main to the feature branch
+1. `git checkout main`
+1. merge main to the feature branch `git merge --no-ff feat/<name>`

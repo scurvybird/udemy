@@ -1,0 +1,18 @@
+import time
+
+name = input("What's your name? ")
+print("Hello " + name + ", here is how to cook pasta!")
+time.sleep(3.0)
+print("Step 1: Boil water")
+time.sleep(2.0)
+print("Step 2: Wait for 5 minutes")
+time.sleep(2.0)
+print("Step 3: Add salt")
+time.sleep(2.0)
+print("Step 4: Add the pasta")
+time.sleep(2.0)
+print("Step 5: Boil for 10 minutes")
+time.sleep(2.0)
+print("Step 6: Remove the water")
+time.sleep(2.0)
+print("and now the pasta is complete, bon apppetit!")
