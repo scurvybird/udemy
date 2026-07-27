@@ -62,7 +62,7 @@ values can be assigned to true or false statements with:
 1. elif
 1. else
 
-Conditions can be nested to incorporate multiple conditions
+conditions can be nested to incorporate multiple conditions
 
 ## Flowchart Programming
 
@@ -71,3 +71,15 @@ a visual chart used to illustrate the flow of logic for a given algorithm
 1. Circles start the algorithm (start/stop)
 1. Squares set variables and assign their values (do something)
 1. Diamonds test conditions based on the values (make decision)
+
+## Lists
+
+a collection of values for a given variable
+
+values in lists can be created and modified
+
+number of values in a list start at 0
+
+values in a list must comprise of the same data type
+
+validate user input: verifying that a value included in a list is appropriate for the list
