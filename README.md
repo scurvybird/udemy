@@ -62,6 +62,8 @@ values can be assigned to true or false statements with:
 1. elif
 1. else
 
+Conditions can be nested to incorporate multiple conditions
+
 ## Flowchart Programming
 
 a visual chart used to illustrate the flow of logic for a given algorithm
