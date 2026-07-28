@@ -83,3 +83,17 @@ number of values in a list start at 0
 values in a list must comprise of the same data type
 
 validate user input: verifying that a value included in a list is appropriate for the list
+
+## Loops
+
+an operation that repeats a set of instructions multiple times
+
+conditions can be set to run the loop/ how long to run the loop
+
+<for> loop is utilized when you know how many time you want to execute the loop
+
+<while> loop is utilized when you do not know how many time you want the loop to be executed
+
+<enumerate> the ordered number of a specific value in a list
+
+a boolean variable can be used as a flag for ending conditional loops
