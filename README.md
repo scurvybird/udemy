@@ -97,3 +97,15 @@ conditions can be set to run the loop/ how long to run the loop
 <enumerate> the ordered number of a specific value in a list
 
 a boolean variable can be used as a flag for ending conditional loops
+
+## Functions
+
+reusable block of code
+
+procedure that gets run whenever triggered
+
+functions can be run within functions
+
+local scope = variables made in the function can only be used in the function, not outside it
+
+global scope = variables made outside the function can be used outside and inside of the function
