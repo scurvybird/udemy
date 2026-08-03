@@ -109,3 +109,13 @@ functions can be run within functions
 local scope = variables made in the function can only be used in the function, not outside it
 
 global scope = variables made outside the function can be used outside and inside of the function
+
+## Libraries
+
+code written by others to be used for a specific purpose
+
+also known as modules or packages
+
+reference documentation for libraries can be found online (docs.python, mdn, etc.)
+
+examples: random number generator, language translation
