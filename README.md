@@ -84,6 +84,8 @@ values in a list must comprise of the same data type
 
 validate user input: verifying that a value included in a list is appropriate for the list
 
+"tuple" is a list that cannot be modified, uses ()
+
 ## Loops
 
 an operation that repeats a set of instructions multiple times

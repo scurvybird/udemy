@@ -10,6 +10,6 @@ RUN echo "dev ALL=(ALL) NOPASSWRD:ALL" | sudo tee /etc/sudoers.d/username
 #setup python dependencies
 RUN apt-get update && apt-get install -y python3 python3-pip
 
-RUN pip install --break-system-packages googletrans==3.1.0a0
+#RUN pip install --break-system-packages googletrans==4.o.o-rcl
 
 USER dev
