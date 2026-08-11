@@ -21,7 +21,7 @@ while not valid_choice:
 cont_order = True
 while cont_order:
     answer = input("Anything else you would like to order? (yes/no) ")
-    if answer =="yes":
+    if answer == "yes":
         valid_choice = False
         while not valid_choice:
             pizza_choice = int(input("what number would you like to add? "))

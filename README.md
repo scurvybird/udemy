@@ -86,6 +86,8 @@ validate user input: verifying that a value included in a list is appropriate fo
 
 "tuple" is a list that cannot be modified, uses ()
 
+"set" is a list with no repeating values
+
 ## Loops
 
 an operation that repeats a set of instructions multiple times
