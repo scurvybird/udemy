@@ -13,6 +13,11 @@ ALWAYS use Conventional Commmit syntax
 
 1. `git checkout -b feat/<name>`
 1. complete the lesson
+1. `git add .`
+1. `git commit -m`
+
+# when work on the feature branch is complete and ready to merge to main branch
+
 1. `git checkout main`
 1. merge main to the feature branch `git merge --no-ff feat/<name>`
 
