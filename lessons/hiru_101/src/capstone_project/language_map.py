@@ -13,10 +13,14 @@ fr_en_dict = {
 }
 
 def en_translate(en_word):
-    print(en_fr_dict.get(en_word))
+    en_trans = en_fr_dict.get(en_word)
+    print(en_trans)
+    return en_trans
 
 def fr_translate(fr_word):
-    print(fr_en_dict.get(fr_word))
+    fr_trans = fr_en_dict.get(fr_word)
+    print(fr_trans)
+    return fr_trans
 
 
 #en_translate("hello")
