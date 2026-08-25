@@ -10,6 +10,14 @@ RUN echo "dev ALL=(ALL) NOPASSWRD:ALL" | sudo tee /etc/sudoers.d/username
 #setup python dependencies
 RUN apt-get update && apt-get install -y python3 python3-pip
 
-#RUN pip install --break-system-packages googletrans==4.o.o-rcl
+# 3. Install Argos Translate system-wide
+RUN pip install --break-system-packages argostranslate
+
+# 4. Pre-download & install English -> French model into the image layer
+RUN python3 -c "import argostranslate.package; \
+    argostranslate.package.update_package_index(); \
+    pkgs = argostranslate.package.get_available_packages(); \
+    en_fr = next(filter(lambda x: x.from_code == 'en' and x.to_code == 'fr', pkgs)); \
+    argostranslate.package.install_from_path(en_fr.download())"
 
 USER dev
