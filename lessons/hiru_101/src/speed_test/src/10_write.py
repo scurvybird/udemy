@@ -38,7 +38,7 @@ while more_words:
     translator = en_translate(en_word)
     time_end = time.time()
     duration = (time_end - time_begin) * 1000000
-    print(str(truncate(duration, 4)) + " us")
+    print("translation time: " + str(truncate(duration, 4)) + " us")
     valid_choice = False
     save_answer = input("Do you want to save this card? (yes/no) ")
     while not valid_choice:
