@@ -40,7 +40,7 @@ except:
 
 try:
     with open(cwd.joinpath('../data_files/countries_5.csv'), 'r', encoding='utf-8') as file:
-        tmp_5 = csv.reader(file)
+        tmp_5 = list(csv.reader(file))
 except:
     tmp_5 = {}
     print("unable to load csv")
@@ -48,7 +48,7 @@ except:
 
 try:
     with open(cwd.joinpath('../data_files/countries_6.csv'), 'r', encoding='utf-8') as file:
-        tmp_6 = csv.reader(file)
+        tmp_6 = list(csv.reader(file))
 except:
     tmp_6 = {}
     print("unable to load csv")
@@ -56,7 +56,7 @@ except:
 
 try:
     with open(cwd.joinpath('../data_files/countries_7.csv'), 'r', encoding='utf-8') as file:
-        tmp_7 = csv.reader(file)
+        tmp_7 = list(csv.reader(file))
 except:
     tmp_7 = {}
     print("unable to load csv")
@@ -70,35 +70,54 @@ except:
     print("unable to load json")
     exit(1)
 
-sorting_list = set(tmp_1 + tmp_2 + tmp_3 + tmp_4 + tmp_5 + tmp_6 + tmp_7 + tmp_8)
-final_list = {}
+# sorting_list = set(tmp_1 + tmp_2 + tmp_3 + tmp_4 + tmp_5 + tmp_6 + tmp_7 + tmp_8)
+# final_list = {}
+
+final_list = []
+sorting_set = set()
+all_groups = [tmp_1, tmp_2, tmp_3, tmp_4, tmp_5, tmp_6, tmp_7, tmp_8]
+for group in all_groups:
+    for item in group:
+        if isinstance(item, list):
+            sorting_set.update(item)
+        else:
+            sorting_set.add(item)
+sorting_list = list(sorting_set)
 
 def item_sort(sorting_list):
-    sorting_item = sorting_list(0)
-
-
-
-def letter_sort(sorting_item):
-    char_index = 0
-    if sorting_item[char_index] < final_list(0[char_index]):
-        return True
-    elif sorting_item[char_index] > final_list(0[char_index]):
-        return False
-    else:
-        char_index +1
+    letter_index = 0
+    while letter_index <= len(sorting_item):
+        if sorting_item[letter_index] < final_item[letter_index]:
+            return True
+        elif sorting_item[letter_index] > final_item[letter_index]:
+            return False
+        else:
+            letter_index += 1
 
 input("Press ENTER to execute the sort")
 time_begin = time.time()
 
-final_list.append(sorting_list(0))
-del sorting_list(0)
 
+final_list.append(sorting_list[0])
+del sorting_list[0]
 
-
+while len(sorting_list) > 0:
+    list_index = 0
+    sorting_item = sorting_list[list_index]
+    final_item = final_list[list_index]
+    if item_sort(sorting_list) == True:
+        final_list.insert(list_index, sorting_item)
+        sorting_list.remove(sorting_item)
+    else:
+        if len(sorting_list) <= list_index:
+            final_list.insert(list_index + 1, sorting_item)
+            sorting_list.remove(sorting_item)
+        else:
+            list_index += 1
+    
 time_end = time.time()
 duration = time_end - time_begin
 print("The sorting process took " + str(duration) + " seconds")
-
 
 with open(cwd.joinpath("final_list.json"), 'w', encoding='utf-8') as file:
         json.dump(list(final_list), file, indent=4)
