@@ -3,6 +3,10 @@ import time
 import csv
 from pathlib import Path
 cwd = Path(__file__).resolve().parent
+import logging
+
+# Set the global logging level to DEBUG
+logging.basicConfig(level=logging.DEBUG)
 
 import json
 
@@ -82,17 +86,21 @@ for group in all_groups:
             sorting_set.update(item)
         else:
             sorting_set.add(item)
-sorting_list = list(sorting_set)
+init_sorting_list = list(sorting_set)
+sorting_list = [item.rstrip('\n') for item in init_sorting_list]
 
-def item_sort(sorting_list):
-    letter_index = 0
-    while letter_index <= len(sorting_item):
-        if sorting_item[letter_index] < final_item[letter_index]:
-            return True
-        elif sorting_item[letter_index] > final_item[letter_index]:
-            return False
-        else:
-            letter_index += 1
+# print(sorting_list)
+
+# def item_sort(sorting_list):
+#     letter_index = 0
+#     while letter_index <= len(sorting_item):
+#         if sorting_item[letter_index] < final_item[letter_index]:
+#             return True
+#         elif sorting_item[letter_index] > final_item[letter_index]:
+#             return False
+#         else:
+#             letter_index += 1
+
 
 input("Press ENTER to execute the sort")
 time_begin = time.time()
@@ -102,19 +110,38 @@ final_list.append(sorting_list[0])
 del sorting_list[0]
 
 while len(sorting_list) > 0:
-    list_index = 0
-    sorting_item = sorting_list[list_index]
-    final_item = final_list[list_index]
-    if item_sort(sorting_list) == True:
-        final_list.insert(list_index, sorting_item)
+    # Step 1 - Do this
+    sorting_list_index = 0
+    final_list_index = 0
+    sorting_item = sorting_list[sorting_list_index]
+    final_item = final_list[final_list_index]
+    # Step 2 - do that while this
+    while len(final_list) > final_list_index:
+        letter_index = 0
+        while letter_index <= len(sorting_item):
+            if sorting_item[letter_index] < final_item[letter_index]:
+                item_sort = True
+            elif sorting_item[letter_index] > final_item[letter_index]:
+                if len(final_list) > final_list_index:
+                    final_list_index += 1
+                else:
+                    logging.debug("length: " + str(len(sorting_list)))
+                    item_sort = False
+            else:
+                letter_index += 1
+    sorting_item = sorting_list[sorting_list_index]
+    final_item = final_list[final_list_index]
+    if item_sort == True:
+        final_list.insert(final_list_index, sorting_item)
         sorting_list.remove(sorting_item)
     else:
-        if len(sorting_list) <= list_index:
-            final_list.insert(list_index + 1, sorting_item)
+        if len(sorting_list) <= sorting_list_index:
+            final_list.insert(final_list_index + 1, sorting_item)
             sorting_list.remove(sorting_item)
         else:
-            list_index += 1
+            final_list_index += 1
     
+logging.debug("1")
 time_end = time.time()
 duration = time_end - time_begin
 print("The sorting process took " + str(duration) + " seconds")
