@@ -91,16 +91,28 @@ sorting_list = [item.rstrip('\n') for item in init_sorting_list]
 
 # print(sorting_list)
 
-# def item_sort(sorting_list):
-#     letter_index = 0
-#     while letter_index <= len(sorting_item):
-#         if sorting_item[letter_index] < final_item[letter_index]:
-#             return True
-#         elif sorting_item[letter_index] > final_item[letter_index]:
-#             return False
-#         else:
-#             letter_index += 1
+def compare_strings(sorting_item: str, final_item: str) -> int:
+    letter_index = 0
+    while letter_index < len(sorting_item) and letter_index < len(final_item):
+        if sorting_item[letter_index] > final_item[letter_index]:
+            return 1
+        elif sorting_item[letter_index] < final_item[letter_index]:
+            return -1
+        else:
+            letter_index += 1
+    if len(sorting_item) < len(final_item):
+        return -1
+    if len(sorting_item) > len(final_item):
+        return 1
+    return 0
 
+# def compare_strings(sorting_item: str, final_item: str):
+#     if sorting_item > final_item:
+#         return 1
+#     elif sorting_item < final_item:
+#         return -1
+#     else:
+#         return 0
 
 input("Press ENTER to execute the sort")
 time_begin = time.time()
@@ -110,38 +122,22 @@ final_list.append(sorting_list[0])
 del sorting_list[0]
 
 while len(sorting_list) > 0:
-    # Step 1 - Do this
-    sorting_list_index = 0
     final_list_index = 0
-    sorting_item = sorting_list[sorting_list_index]
     final_item = final_list[final_list_index]
-    # Step 2 - do that while this
     while len(final_list) > final_list_index:
-        letter_index = 0
-        while letter_index <= len(sorting_item):
-            if sorting_item[letter_index] < final_item[letter_index]:
-                item_sort = True
-            elif sorting_item[letter_index] > final_item[letter_index]:
-                if len(final_list) > final_list_index:
-                    final_list_index += 1
-                else:
-                    logging.debug("length: " + str(len(sorting_list)))
-                    item_sort = False
-            else:
-                letter_index += 1
-    sorting_item = sorting_list[sorting_list_index]
-    final_item = final_list[final_list_index]
-    if item_sort == True:
-        final_list.insert(final_list_index, sorting_item)
-        sorting_list.remove(sorting_item)
-    else:
-        if len(sorting_list) <= sorting_list_index:
-            final_list.insert(final_list_index + 1, sorting_item)
+        sorting_list_index = 0
+        sorting_item = sorting_list[sorting_list_index]
+        if compare_strings(sorting_item, final_item) == -1:
+            # logging.debug("put into final_list")
+            final_list.insert(final_list_index, sorting_item)
             sorting_list.remove(sorting_item)
         else:
+            # logging.debug(final_list_index)
             final_list_index += 1
+    final_list.insert(final_list_index + 1, sorting_item)
+    sorting_list.remove(sorting_item)
+
     
-logging.debug("1")
 time_end = time.time()
 duration = time_end - time_begin
 print("The sorting process took " + str(duration) + " seconds")
