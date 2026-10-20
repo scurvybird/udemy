@@ -85,9 +85,9 @@ for group in all_groups:
         if isinstance(item, list):
             sorting_set.update(item)
         else:
+            item = item.rstrip('\n')
             sorting_set.add(item)
-init_sorting_list = list(sorting_set)
-sorting_list = [item.rstrip('\n') for item in init_sorting_list]
+sorting_list = list(sorting_set)
 
 # print(sorting_list)
 
@@ -117,9 +117,9 @@ def compare_strings(sorting_item: str, final_item: str) -> int:
 input("Press ENTER to execute the sort")
 time_begin = time.time()
 
+test_item = sorting_list.pop(0)
 
-final_list.append(sorting_list[0])
-del sorting_list[0]
+final_list.append(test_item)
 
 while len(sorting_list) > 0:
     final_list_index = 0
@@ -144,3 +144,6 @@ print("The sorting process took " + str(duration) + " seconds")
 
 with open(cwd.joinpath("final_list.json"), 'w', encoding='utf-8') as file:
         json.dump(list(final_list), file, indent=4)
+
+# with open(cwd.joinpath("sorting_list.json"), 'w', encoding='utf-8') as file:
+#         json.dump(list(sorting_list), file, indent=4)
