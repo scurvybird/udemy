@@ -1,5 +1,7 @@
 
 def compare_strings(sorting_item: str, final_item: str) -> int:
+    sorting_item = sorting_item.lower()
+    final_item = final_item.lower()
     letter_index = 0
     while letter_index < len(sorting_item) and letter_index < len(final_item):
         if sorting_item[letter_index] > final_item[letter_index]:
@@ -86,11 +88,24 @@ def test_empty_second_parameter():
     if actual_result != expected_result:
         raise ValueError(f"expected value: {expected_result} not equal to actual value: {actual_result}")
 
+def test_antigua_and_barbuda_vs_COMOROS():
+    si = "antigua and barbuda"
+    fi = "COMOROS"
+    actual_result = compare_strings(si, fi)
+    expected_result = -1
+    if actual_result != expected_result:
+        raise ValueError(f"expected value: {expected_result} not equal to actual value: {actual_result}")
 
-test_equal()
-test_lt()
-test_gt()
-test_equal_but_shorter()
-test_equal_but_longer()
-test_empty_second_parameter()
-print("YAY TESTS PASS")
+def main():
+    test_equal()
+    test_lt()
+    test_gt()
+    test_equal_but_shorter()
+    test_equal_but_longer()
+    test_empty_second_parameter()
+    test_antigua_and_barbuda_vs_COMOROS()
+    print("YAY TESTS PASS")
+    
+if __name__ == "__main__":
+    main()
+
