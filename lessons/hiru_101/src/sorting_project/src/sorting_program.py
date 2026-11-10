@@ -125,8 +125,9 @@ while len(sorting_list) > 0:
         else:
             # logging.debug(final_list_index)
             final_list_index += 1
-    final_list.insert(final_list_index + 1, sorting_item)
-    sorting_list.remove(sorting_item)
+    if len(sorting_list) > 0:
+            final_list.insert(final_list_index + 1, sorting_item)
+            sorting_list.remove(sorting_item)
 
     
 time_end = time.time()
